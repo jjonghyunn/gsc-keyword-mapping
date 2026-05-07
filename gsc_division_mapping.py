@@ -197,7 +197,7 @@ def main():
         print(df[out_col].value_counts().head(10).to_string())
 
     ts = datetime.now().strftime("%Y%m%d_%H%M")
-    out_path = SCRIPT_DIR / f"{RAW_INPUT.stem}_{ts}_with_division.csv"
+    out_path = SCRIPT_DIR / f"{RAW_INPUT.stem}_with_division_{ts}.csv"
     df.to_csv(out_path, index=False, encoding="utf-8-sig")
     print(f"\n[OK] 저장: {out_path}  ({len(df):,}행)")
 
