@@ -18,6 +18,7 @@
 #   3. DATE_FORMATTING: 날짜 컬럼 포맷 정규화 페어
 #   4. 실행 → {입력파일명}_with_division.csv 저장
 
+from datetime import datetime
 from pathlib import Path
 import pandas as pd
 
@@ -195,7 +196,8 @@ def main():
         print(f"  '{out_col}' 분포 (top 10):")
         print(df[out_col].value_counts().head(10).to_string())
 
-    out_path = SCRIPT_DIR / f"{RAW_INPUT.stem}_with_division.csv"
+    ts = datetime.now().strftime("%Y%m%d_%H%M")
+    out_path = SCRIPT_DIR / f"{RAW_INPUT.stem}_{ts}_with_division.csv"
     df.to_csv(out_path, index=False, encoding="utf-8-sig")
     print(f"\n[OK] 저장: {out_path}  ({len(df):,}행)")
 
