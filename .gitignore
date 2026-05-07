@@ -1,0 +1,21 @@
+# Raw 입력 / 출력 (실 데이터는 커밋 금지)
+*_raw.csv
+*_raw.xlsx
+*_with_division.csv
+gsc_mapping_test_raw.csv
+gsc_mapping_test_raw.xlsx
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+.env
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
