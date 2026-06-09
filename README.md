@@ -1,4 +1,5 @@
-# gsc-keyword-mapping
+# gsc-keyword-mapping  
+<sub>2026-06-09  Jonghyun Park w/ Claude</sub>  
 
 Google Search Console raw 데이터의 쿼리 텍스트를 키워드 매핑으로 division(`MX/VD/DA/...`)별 분류하는 파이썬 스크립트.
 
