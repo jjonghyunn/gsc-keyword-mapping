@@ -10,8 +10,8 @@ GSC raw 데이터의 쿼리 텍스트를 키워드 매칭으로 division(MX/VD/D
 gsc-keyword-mapping/
 ├── gsc_division_mapping.py   # 메인 스크립트
 ├── gsc_division_keyword.csv          # 실 키워드 매핑 (130개, MX 62 / VD 27 / DA 41)
-├── gsc_mapping_raw.csv               # raw 입력 (10 columns: A=Date … J=division)
-└── gsc_mapping_raw_with_division_YYYYMMDD_HHMM.csv  # 실행 결과
+├── gsc_mapping_raw.csv               # raw 입력 (로컬 전용, repo 미포함)
+└── gsc_mapping_raw_with_division_YYYYMMDD_HHMM.csv  # 실행 결과 (로컬 전용, repo 미포함)
 ```
 
 ## 입력 raw 컬럼 구조
