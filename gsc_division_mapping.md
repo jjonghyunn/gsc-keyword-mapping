@@ -1,8 +1,7 @@
-# GSC Division Mapping
+# GSC Division Mapping  
+<sub>2026-05-07  Jonghyun Park w/ Claude</sub>  
 
 GSC raw 데이터의 쿼리 텍스트를 키워드 매칭으로 division(MX/VD/DA/ETC)별 분류.
-
-기준 문서 업데이트일: 2026-05-07
 
 ## 폴더 구성
 
