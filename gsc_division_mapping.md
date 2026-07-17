@@ -1,14 +1,14 @@
 # GSC Division Mapping  
-<sub>2026-05-07  Jonghyun Park w/ Claude</sub>  
+<sub>2026-07-17  Jonghyun Park w/ Claude</sub>  
 
-GSC raw 데이터의 쿼리 텍스트를 키워드 매칭으로 division(MX/VD/DA/ETC)별 분류.
+GSC raw 데이터의 쿼리 텍스트를 키워드 매칭으로 division(DIV1/DIV2/DIV3/ETC)별 분류.
 
 ## 폴더 구성
 
 ```
 gsc-keyword-mapping/
 ├── gsc_division_mapping.py   # 메인 스크립트
-├── gsc_division_keyword.csv          # 실 키워드 매핑 (130개, MX 62 / VD 27 / DA 41)
+├── gsc_division_keyword.csv          # 실 키워드 매핑 (130개, DIV1 62 / DIV2 27 / DIV3 41)
 ├── gsc_mapping_raw.csv               # raw 입력 (로컬 전용, repo 미포함)
 └── gsc_mapping_raw_with_division_YYYYMMDD_HHMM.csv  # 실행 결과 (로컬 전용, repo 미포함)
 ```
@@ -44,7 +44,7 @@ DATE_FORMATTING = [
     ("H", "%Y-%m"),      # Month
 ]
 
-DIVISION_ORDER  = ["MX", "VD", "DA"]
+DIVISION_ORDER  = ["DIV1", "DIV2", "DIV3"]
 UNMATCHED_LABEL = "ETC"
 ```
 
@@ -63,7 +63,7 @@ python gsc_division_mapping.py
 
 - `gsc_division_keyword.csv` 의 (Keyword, Division) 페어를 모두 로드
 - 각 셀 텍스트(lowercase 처리) 안에 키워드가 substring으로 들어 있으면 매칭
-- 한 셀 다중 매칭 → `MX, VD, DA` 순서로 정렬해 `", "` join
+- 한 셀 다중 매칭 → `DIV1, DIV2, DIV3` 순서로 정렬해 `", "` join
 - 매칭 0건 → `ETC`
 - 새 division 라벨이 CSV에 들어와도 동작 (정렬 우선순위는 `DIVISION_ORDER` 뒤에 알파벳순)
 
@@ -71,20 +71,20 @@ python gsc_division_mapping.py
 
 | 매핑 | 매칭률 | 분포 (top) |
 |---|---|---|
-| I열(EN) → J열 (`division`) | 58.1% | MX 289,846 / VD 18,280 / DA 10,758 / MX,VD 316 / VD,DA 50 / MX,DA 26 / **ETC 230,724** |
-| B열(로컬어) → K열 (`division_local_lang`) | 52.3% | MX 267,880 / VD 16,889 / DA 2,865 / MX,VD 157 / MX,DA 13 / **ETC 262,196** |
+| I열(EN) → J열 (`division`) | 58.1% | DIV1 289,846 / DIV2 18,280 / DIV3 10,758 / DIV1,DIV2 316 / DIV2,DIV3 50 / DIV1,DIV3 26 / **ETC 230,724** |
+| B열(로컬어) → K열 (`division_local_lang`) | 52.3% | DIV1 267,880 / DIV2 16,889 / DIV3 2,865 / DIV1,DIV2 157 / DIV1,DIV3 13 / **ETC 262,196** |
 
 샘플 검증:
-- "brand product_type" → MX (galaxy 키워드 매칭)
-- "brand tablet" → MX (tablet 키워드)
-- "montre connectée brand" (FR) → ETC (로컬어에 매칭 키워드 없음), 번역어 "brand smartwatch" → MX (watch)
+- "brand product_type" → DIV1 (galaxy 키워드 매칭)
+- "brand tablet" → DIV1 (tablet 키워드)
+- "montre connectée brand" (FR) → ETC (로컬어에 매칭 키워드 없음), 번역어 "brand smartwatch" → DIV1 (watch)
 - "brand country" → ETC (제품 키워드 없음)
 
 ## 키워드 추가/수정
 
 `gsc_division_keyword.csv` 의 행만 추가/수정하면 코드 수정 없이 다음 실행부터 반영.
 - Keyword: lowercase 권장 (매칭은 어차피 대소문자 무시)
-- Division: `MX` / `VD` / `DA` 등 라벨
+- Division: `DIV1` / `DIV2` / `DIV3` 등 라벨
 
 ## 공개 repo 참고
 

@@ -1,8 +1,9 @@
 # gsc_division_mapping.py
 # 2026-05-07  Jonghyun Park w/ Claude
+# updated: 2026-07-17 15:44  — division 코드 sanitize (DIV1/2/3 placeholder 치환)
 #
 # Google Search Console raw 데이터의 쿼리 텍스트 열에서 키워드를 substring 매칭해
-# division(MX/VD/DA/...)으로 분류하는 스크립트.
+# division(DIV1/DIV2/DIV3/...)으로 분류하는 스크립트.
 #
 # 동작:
 #   - keyword → division 매핑은 gsc_division_keyword.csv 의 A열(Keyword), B열(Division)
@@ -39,7 +40,7 @@ MAPPINGS = [
 ]
 
 # Division 우선 순위 (출력 시 이 순서로 join)
-DIVISION_ORDER = ["MX", "VD", "DA"]
+DIVISION_ORDER = ["DIV1", "DIV2", "DIV3"]
 
 # 매칭 실패 시 채울 값
 UNMATCHED_LABEL = "ETC"
@@ -167,7 +168,7 @@ def main():
     by_div = {}
     for _, d in kw_pairs:
         by_div[d] = by_div.get(d, 0) + 1
-    print(f"  키워드 총 {len(kw_pairs)}개  (MX={by_div.get('MX',0)} / VD={by_div.get('VD',0)} / DA={by_div.get('DA',0)})")
+    print(f"  키워드 총 {len(kw_pairs)}개  (DIV1={by_div.get('DIV1',0)} / DIV2={by_div.get('DIV2',0)} / DIV3={by_div.get('DIV3',0)})")
 
     print(f"\n▶ raw 입력 로드: {RAW_INPUT}")
     if not RAW_INPUT.exists():
